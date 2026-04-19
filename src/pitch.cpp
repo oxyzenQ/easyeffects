@@ -93,6 +93,9 @@ Pitch::~Pitch() {
     disconnect_from_pw();
   }
 
+  delete snd_touch;
+  snd_touch = nullptr;
+
   settings->disconnect();
 
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
@@ -326,6 +329,7 @@ void Pitch::set_rate_difference() {
 
 void Pitch::init_soundtouch() {
   delete snd_touch;
+  snd_touch = nullptr;
 
   snd_touch = new soundtouch::SoundTouch();
 
